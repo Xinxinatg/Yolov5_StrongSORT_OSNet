@@ -210,7 +210,7 @@ def run(
 #                             with open(txt_path + '.txt', 'a') as f:
 #                                 f.write(('%g ' * 10 + '\n') % (frame_idx + 1, id, bbox_left,  # MOT format
 #                                                                bbox_top, bbox_w, bbox_h, -1, -1, -1, i))
-                            counts_array.append([frame_idx + 1, id, bbox_left, bbox_top, bbox_w, bbox_h, -1, -1, -1, i])
+                            count_array.append([frame_idx + 1, id, bbox_left, bbox_top, bbox_w, bbox_h, -1, -1, -1, i])
                         if save_vid or save_crop or show_vid:  # Add bbox to image
                             c = int(cls)  # integer class
                             id = int(id)  # integer id
@@ -265,8 +265,8 @@ def run(
         LOGGER.info(f"Results saved to {colorstr('bold', save_dir)}{s}")
     if update:
         strip_optimizer(yolo_weights)  # update model (to fix SourceChangeWarning)
-    counts_pd=pd.DataFrame(counts_array) 
-    counts_pd.to_csv(txt_path + '.csv'.format(tail.replace('.mkv','')),index=False)
+    count_pd=pd.DataFrame(count_array) 
+    count_pd.to_csv(txt_path + '.csv'.format(tail.replace('.mkv','')),index=False)
 
 def parse_opt():
     parser = argparse.ArgumentParser()
