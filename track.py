@@ -1,5 +1,5 @@
 import argparse
-import pandas as pd
+
 import os
 # limit the number of cpus used by high performance libraries
 os.environ["OMP_NUM_THREADS"] = "1"
@@ -7,7 +7,7 @@ os.environ["OPENBLAS_NUM_THREADS"] = "1"
 os.environ["MKL_NUM_THREADS"] = "1"
 os.environ["VECLIB_MAXIMUM_THREADS"] = "1"
 os.environ["NUMEXPR_NUM_THREADS"] = "1"
-
+import pandas as pd
 import sys
 import numpy as np
 from pathlib import Path
@@ -266,7 +266,7 @@ def run(
     if update:
         strip_optimizer(yolo_weights)  # update model (to fix SourceChangeWarning)
     count_pd=pd.DataFrame(count_array) 
-    count_pd.to_csv(txt_path + '.csv'.format(tail.replace('.mkv','')),index=False)
+    count_pd.to_csv(txt_path + '.csv',index=False)
 
 def parse_opt():
     parser = argparse.ArgumentParser()
