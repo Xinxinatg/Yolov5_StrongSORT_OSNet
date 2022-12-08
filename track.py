@@ -90,7 +90,8 @@ def run(
     else:  # multiple models after --yolo_weights
         exp_name = 'ensemble'
     exp_name = name if name else exp_name + "_" + reid_weights.stem
-    save_dir = increment_path(Path(project) / exp_name, exist_ok=exist_ok)  # increment run
+    #save_dir = increment_path(Path(project) / exp_name, exist_ok=exist_ok)  # increment run
+    save_dir= Path('tracking_results')
     (save_dir / 'tracks' if save_txt else save_dir).mkdir(parents=True, exist_ok=True)  # make dir
 
     # Load model
